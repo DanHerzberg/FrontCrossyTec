@@ -5,6 +5,36 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Crossy Tec</h1>
+    <div class="container">
+        <div class="logo">
+            <img src= @Url.Content("~/images/Sorteos.png") alt="Logo" width="150"> <!-- Puedes cambiar la ruta del logo si tienes uno -->
+        </div>
+            <!-- Ajusta la acción del formulario según tus necesidades -->
+            <div class="field">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+            </div>
+            <div class="field">
+                <input type="text" name="apellido" placeholder="Apellido" required>
+            </div>
+            <div class="field">
+                <input type="email" name="email" placeholder="Número de celular o correo electrónico" required>
+            </div>
+            <div class="field">
+                <input type="password" name="password" placeholder="Contraseña nueva" required>
+            </div>
+            <div class="field">
+                <label>Fecha de nacimiento:</label>
+                <input type="date" name="birthdate" required>
+            </div>
+            <div class="field">
+                <label>Sexo:</label>
+                <input type="radio" name="gender" value="mujer" required>Mujer
+                <input type="radio" name="gender" value="hombre" required>Hombre
+                <input type="radio" name="gender" value="personalizado" required>Personalizado
+            </div>
+            <div class="field">
+                <button type="submit">Registrarte</button>
+            </div>
+    </div>
 </div>

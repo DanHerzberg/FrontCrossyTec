@@ -16,3 +16,87 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+p{
+    color: purple;
+}
+
+.text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Contenedor del formulario */
+.container {
+    width: 100%;
+    max-width: 800px; /* Limita el ancho máximo del formulario */
+    padding: 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-top: 8px;
+    background-color: #ffffff;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column; /* si quieres que se apilen verticalmente */
+    align-items: center; /* centra elementos horizontalmente */
+    justify-content: center;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 250px; 
+    overflow: hidden;
+}
+
+    .logo img {
+        width: 100%;
+        height: auto;
+        object-fit: contain; /* Ajusta según el tamaño de tu logo */
+    }
+
+/* Campos del formulario */
+.field {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Estilos para los botones */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF; /* Color de fondo del botón */
+    color: #ffffff; /* Color de texto del botón */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+    button:hover {
+        background-color: #0056b3; /* Color de fondo del botón al pasar el mouse */
+    }
+
+/* Estilo para etiquetas de radio buttons */
+label {
+    margin-right: 10px;
+    font-weight: bold;
+}
