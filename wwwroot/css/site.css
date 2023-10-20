@@ -13,7 +13,7 @@ html {
   min-height: 100%;
 }
 
-body {
+.body_registro{
     margin-bottom: 60px;
     background-image: url('../images/bikini.jpg');
     background-size: cover; /* Esto hará que la imagen cubra todo el viewport */
@@ -35,7 +35,7 @@ p{
 }
 
 /* Contenedor del formulario */
-.container {
+.container_registro{
     width: 100%;
     max-width: 800px; /* Limita el ancho máximo del formulario */
     padding: 40px;
