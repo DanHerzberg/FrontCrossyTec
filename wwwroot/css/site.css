@@ -1,28 +1,28 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
-.body_registro{
+.body_registro {
     margin-bottom: 60px;
     background-image: url('../images/bikini.jpg');
-    background-size: cover; /* Esto hará que la imagen cubra todo el viewport */
-    background-repeat: no-repeat; /* Esto evitará que la imagen se repita */
-    background-position: center center; /* Esto centrará la imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     background-attachment: fixed;
 }
 
-p{
+p {
     color: purple;
 }
 
@@ -34,10 +34,9 @@ p{
     height: 100vh;
 }
 
-/* Contenedor del formulario */
-.container_registro{
+.container_registro {
     width: 100%;
-    max-width: 800px; /* Limita el ancho máximo del formulario */
+    max-width: 800px;
     padding: 40px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -46,29 +45,27 @@ p{
     background-color: rgba(255, 255, 255, 0.7);
     overflow-y: auto;
     display: flex;
-    flex-direction: column; /* si quieres que se apilen verticalmente */
-    align-items: center; /* centra elementos horizontalmente */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     font-family: 'Lilita One', sans-serif;
 }
 
-/* Logo */
 .logo {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
     width: 100%;
-    max-width: 250px; 
+    max-width: 250px;
     overflow: hidden;
 }
 
     .logo img {
         width: 100%;
         height: auto;
-        object-fit: contain; /* Ajusta según el tamaño de tu logo */
+        object-fit: contain;
     }
 
-/* Campos del formulario */
 .field {
     margin-bottom: 20px;
 }
@@ -84,12 +81,11 @@ input[type="date"] {
     font-size: 16px;
 }
 
-/* Estilos para los botones */
 button {
     width: 100%;
     padding: 12px;
-    background-color: #007BFF; /* Color de fondo del botón */
-    color: #ffffff; /* Color de texto del botón */
+    background-color: #007BFF;
+    color: #ffffff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -98,11 +94,74 @@ button {
 }
 
     button:hover {
-        background-color: #0056b3; /* Color de fondo del botón al pasar el mouse */
+        background-color: #0056b3;
     }
 
-/* Estilo para etiquetas de radio buttons */
 label {
     margin-right: 10px;
     font-weight: bold;
+}
+
+.body_login {
+    background-color: #22327b;
+}
+
+.logo_login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 300px;
+}
+
+    .logo_login img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+.container_login {
+    width: 100%;
+    max-width: 700px;
+    padding: 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 8px;
+    background-color: #FFFFFF;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lilita One', sans-serif;
+}
+
+    .container_login p {
+        color: purple;
+        font-size: 20px;
+    }
+
+.text-center-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+@keyframes slideFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.error-message {
+    color: red;
+    opacity: 0; 
+    animation: slideFadeIn 0.5s forwards; 
 }
