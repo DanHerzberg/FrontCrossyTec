@@ -11,6 +11,8 @@ namespace FrontCrossyTec.Pages
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
+            LoginEmail = string.Empty;
+            LoginPassword = string.Empty;
         }
 
         [BindProperty]
@@ -23,7 +25,7 @@ namespace FrontCrossyTec.Pages
 
         public void OnGet()
         {
-            
+
         }
 
         public IActionResult OnPost()
@@ -31,7 +33,7 @@ namespace FrontCrossyTec.Pages
             if (LoginEmail == "pepito@hotmail.com" && LoginPassword == "123")
             {
                 // Redirige a la página de registro si las credenciales son correctas.
-                return RedirectToPage("PaginaRegistro");
+                return RedirectToPage("PaginaMenu");
             }
             else
             {
