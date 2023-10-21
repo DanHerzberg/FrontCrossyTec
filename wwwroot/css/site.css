@@ -165,3 +165,41 @@ label {
     opacity: 0; 
     animation: slideFadeIn 0.5s forwards; 
 }
+
+/*Estilos Main Menu*/
+
+.body-menu {
+    background-color: dodgerblue;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.game-container {
+    width: 80%;
+    height: 60%;
+    border: 1px solid #000;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    border: solid;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+    .buttons-container button {
+        flex: 1;
+        margin: 0 10px;
+        padding: 10px;
+        border: medium;
+        cursor: pointer;
+        background-color: #333;
+        color: #fff;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .buttons-container button:hover {
+            background-color: #0056b3;
+        }
