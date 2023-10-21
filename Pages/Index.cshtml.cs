@@ -11,6 +11,8 @@ namespace FrontCrossyTec.Pages
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
+            LoginEmail = string.Empty;
+            LoginPassword = string.Empty;
         }
 
         [BindProperty]
