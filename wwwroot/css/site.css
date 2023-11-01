@@ -15,11 +15,15 @@ html {
 
 .body_registro {
     margin-bottom: 60px;
-    background-image: url('../images/bikini.jpg');
+    background-color: #22327b;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
+}
+
+.body_registro h1{
+    color:#FFFFFF;
 }
 
 p {
@@ -37,34 +41,19 @@ p {
 .container_registro {
     width: 100%;
     max-width: 800px;
-    padding: 40px;
+    padding: 4px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin-top: 8px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: #FFFFFF;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'Lilita One', sans-serif;
+    font-family: 'Heebo', sans-serif;
 }
-
-.logo {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 250px;
-    overflow: hidden;
-}
-
-    .logo img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-    }
 
 .field {
     margin-bottom: 20px;
@@ -132,12 +121,16 @@ label {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'Lilita One', sans-serif;
+    font-family: 'Heebo', sans-serif;
 }
 
     .container_login p {
-        color: purple;
+        color: #828282;
         font-size: 20px;
+    }
+
+    .container_login h1{
+        color:#828282;
     }
 
 .text-center-login {
@@ -169,8 +162,9 @@ label {
 /*Estilos Main Menu*/
 
 .body-menu {
-    background-color: dodgerblue;
-    font-family: 'Lilita One', sans-serif;
+    background-color: #22327b;
+    font-family: 'Heebo', sans-serif;
+    color: #FFFFFF;
 }
 
 .game-container {
@@ -203,3 +197,47 @@ label {
         .buttons-container button:hover {
             background-color: #0056b3;
         }
+
+
+.link-login {
+    text-decoration: underline;
+    color: #0000FF;
+    cursor: pointer;
+    font-size: 16px; 
+    font-weight: normal; 
+}
+
+   
+    .link-login:hover {
+        color: #FF0000; 
+    }
+
+
+
+.logout-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #FFF; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    text-decoration:none;
+}
+
+    .logout-button:hover {
+        background-color: #555; 
+    }
+
+.logout-icon {
+    margin-right: 5px; 
+}
+
+a.logout-button {
+    text-decoration: none;
+}
