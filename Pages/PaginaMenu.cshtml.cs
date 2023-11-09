@@ -9,8 +9,6 @@ namespace FrontCrossyTec.Pages
 {
 	public class PaginaMenuModel : PageModel
     {
-        public void OnGet()
-        {
-        }
+        
     }
 }
