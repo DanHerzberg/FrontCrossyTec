@@ -1,20 +1,24 @@
 ﻿using System;
+
 namespace FrontCrossyTec.Model
 {
     public class Caja
     {
         public int Id { get; set; }
-        public string ImagenUrl { get; set; }
+        public string Nombre { get; set; }  // Campo adicional para el nombre
         public decimal Precio { get; set; }
 
-        // Constructor, si es necesario
-        public Caja(int id, string imagenUrl, decimal precio)
+        // Constructor por defecto
+        public Caja()
+        {
+        }
+
+        // Constructor con parámetros
+        public Caja(int id, string nombre, decimal precio)
         {
             Id = id;
-            ImagenUrl = imagenUrl;
+            Nombre = nombre;
             Precio = precio;
         }
     }
-
 }
-
