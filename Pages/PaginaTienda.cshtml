@@ -22,9 +22,11 @@
             {
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="@Model.Cajas[i].ImagenUrl" class="card-img-top" alt="Imagen de la caja">
+                        <!-- Imagen añadida manualmente -->
+                        <img src="@("/images/caja" + Model.Cajas[i].Id + ".jpg")" class="card-img-top" alt="Imagen de la caja">
+
                         <div class="card-body">
-                            <h5 class="card-title">Caja #@Model.Cajas[i].Id</h5>
+                            <h5 class="card-title">@Model.Cajas[i].Nombre</h5>
                             <p class="card-text">Precio: $@Model.Cajas[i].Precio</p>
                         </div>
                     </div>
