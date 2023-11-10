@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Newtonsoft.Json; // Si estás utilizando Newtonsoft.Json para la deserialización
+using Newtonsoft.Json;
 
 namespace FrontCrossyTec.Model
 {
@@ -15,45 +15,29 @@ namespace FrontCrossyTec.Model
             _httpClient = httpClient;
         }
 
-        public async Task<List<Caja>> GetChestsAsync()
+        public async Task<List<Chest>> GetChestsAsync()
         {
             try
             {
-                var response = await _httpClient.GetAsync("api/Chest");
+                var response = await _httpClient.GetAsync("https://localhost:7173/api/Chest");
+
                 if (response.IsSuccessStatusCode)
                 {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var chests = JsonConvert.DeserializeObject<List<ChestDto>>(json); // Utiliza una clase DTO si la estructura difiere de tu modelo Caja
-
-                    var cajas = new List<Caja>();
-                    foreach (var chest in chests)
-                    {
-                        cajas.Add(new Caja
-                        {
-                            Id = chest.ChestId,
-                            Nombre = chest.ChestName,
-                            Precio = chest.Price
-                        });
-                    }
-
-                    return cajas;
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<Chest>>(content, Converter.Settings);
                 }
-
-                // Maneja la respuesta fallida aquí, si es necesario
-                return null;
+                else
+                {
+                    // Aquí puedes manejar errores, lanzar excepciones, etc.
+                    throw new Exception($"Error al obtener datos: {response.StatusCode}");
+                }
             }
             catch (Exception ex)
             {
-                // Maneja la excepción aquí
-                return null;
+                // Aquí puedes manejar excepciones de red u otras excepciones que puedan ocurrir
+                throw new Exception($"Error en la solicitud HTTP: {ex.Message}");
             }
         }
     }
-
-    public class ChestDto
-    {
-        public int ChestId { get; set; }
-        public string ChestName { get; set; }
-        public decimal Price { get; set; }
-    }
 }
+
