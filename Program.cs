@@ -1,7 +1,15 @@
+using FrontCrossyTec.Model;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 builder.Services.AddRazorPages();
+builder.Services.AddHttpClient<ApiService>(client =>
+{
+    // Modificar esto a la direccion del puerto en el que esta la base de datos
+    client.BaseAddress = new Uri("http://localhost:5000/");
+    
+});
 
 var app = builder.Build();
 
