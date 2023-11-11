@@ -4,17 +4,20 @@
 }
 
 <body class="body-menu">
-    <a href="Index" class="logout-button">
-        <span class="logout-icon">←</span>Logout
-    </a>
-    <div class="text-center">
-        <h1>Crossy Tec</h1>
-        <div class="game-container">
+    <div class="pagina-menu">
+        <a href="Index" class="logout-button">
+            <span class="logout-icon">←</span>Logout
+        </a>
+        <div class="text-center">
+            <h1>Crossy Tec</h1>
+            <div class="game-container">
+            </div>
+            <div class="buttons-container">
+                <button>Jugar</button>
+                <a asp-page="PaginaTienda" class="btn btn-primary">Tienda</a>
+                <a asp-page="PaginaScoreboard" class="btn btn-primary">Scoreboard</a>
+                <button>Ajustes</button>
+            </div>
         </div>
-        <div class="buttons-container">
-            <a asp-page="PaginaTienda" class="btn btn-primary">Tienda</a>
-            <a asp-page="PaginaScoreboard" class="btn btn-primary">Scoreboard</a>
-            <button>Ajustes</button>
         </div>
-    </div>
 </body>
