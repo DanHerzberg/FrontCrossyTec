@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using System.Collections.Generic;
+using Newtonsoft.Json; // Si estás utilizando Newtonsoft.Json para la deserialización
 
 namespace FrontCrossyTec.Model
 {
@@ -20,8 +21,7 @@ namespace FrontCrossyTec.Model
         {
             try
             {
-                var response = await _httpClient.GetAsync("https://localhost:7173/api/Chest");
-
+                var response = await _httpClient.GetAsync("api/Chest");
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
@@ -60,9 +60,24 @@ namespace FrontCrossyTec.Model
             }
             catch (Exception ex)
             {
-                // Aquí puedes manejar excepciones de red u otras excepciones que puedan ocurrir
-                throw new Exception($"Error en la solicitud HTTP: {ex.Message}");
+                // Maneja la excepción aquí
+                return null;
             }
         }
     }
+
+    public class ChestDto
+    {
+        public int ChestId { get; set; }
+        public string ChestName { get; set; }
+        public decimal Price { get; set; }
+    }
+
+    public class Login
+    {
+        public string email { get; set; }
+        public string password { get; set; }
+
+    }
+
 }

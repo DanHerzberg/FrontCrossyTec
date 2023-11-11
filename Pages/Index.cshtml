@@ -13,20 +13,13 @@
             <h1>Crossy Tec</h1>
             <p>Diviertete jugando a la vez que ganas recompensas!</p>
 
-            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
-            {
-                <div class="error-message">
-                    @Model.ErrorMessage
-                </div>
-            }
-
             <form method="post">
                 <div class="container_datos">
                     <div class="field">
-                        <input type="email" asp-for="LoginEmail" placeholder="Correo electrónico" required>
+                        <input type="email" asp-for="Email" placeholder="Correo electrónico" required>
                     </div>
                     <div class="field">
-                        <input type="password" asp-for="LoginPassword" placeholder="Contraseña" required>
+                        <input type="password" asp-for="Password" placeholder="Contraseña" required>
                     </div>
                     <div class="field">
                         <button type="submit">Iniciar sesión</button>

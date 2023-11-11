@@ -29,6 +29,9 @@
                     <input type="password" name="password" placeholder="Contraseña nueva" required>
                 </div>
                 <div class="field">
+                    <input type="text" name="gamertag" placeholder="Gamertag" required>
+                </div>
+                <div class="field">
                     <label>Fecha de nacimiento:</label>
                     <input type="date" name="birthdate" required>
                 </div>
@@ -75,6 +78,17 @@
                         <option value="Zacatecas">Zacatecas</option>
                     </select>
                 </div>
+                @if (!ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                            {
+                                <li>@error.ErrorMessage</li>
+                            }
+                        </ul>
+                    </div>
+                }
                 <div class="field">
                     <button type="submit">Registrarte</button>
                 </div>

@@ -1,46 +1,40 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
+using FrontCrossyTec.Model;
 
 namespace FrontCrossyTec.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+       
+        [BindProperty]
+        public string Email { get; set; }
+        [BindProperty]
+        public string Password { get; set; }
+        private readonly ApiService _apiService;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ApiService apiService)
         {
-            _logger = logger;
-            LoginEmail = string.Empty;
-            LoginPassword = string.Empty;
+            _apiService = apiService;
+            
         }
 
-        [BindProperty]
-        public string LoginEmail { get; set; }
-
-        [BindProperty]
-        public string LoginPassword { get; set; }
-
-        public string ErrorMessage { get; set; } = string.Empty;
-
-        public void OnGet()
+        public async Task<IActionResult> OnPostAsync()
         {
+            HttpResponseMessage response = await _apiService.LoginAsync(Email, Password);
 
-        }
-
-        public IActionResult OnPost()
-        {
-            if (LoginEmail == "pepito@hotmail.com" && LoginPassword == "123")
+            if (response.IsSuccessStatusCode)
             {
-                // Redirige a la página de registro si las credenciales son correctas.
+                // El inicio de sesión fue exitoso, redirige al usuario al menú principal
                 return RedirectToPage("PaginaMenu");
             }
             else
             {
-                // Muestra un mensaje de error si las credenciales son incorrectas.
-                ErrorMessage = "Credenciales inválidas";
+                // El inicio de sesión falló, muestra un mensaje de error
+                ModelState.AddModelError(string.Empty, "Inicio de sesión fallido. Revisa tus credenciales.");
                 return Page();
             }
+
         }
     }
 }
