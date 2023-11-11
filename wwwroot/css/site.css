@@ -162,86 +162,77 @@ label {
 /*Estilos Main Menu*/
 
 .body-menu {
-    background-color: #22327b;
-    font-family: 'Heebo', sans-serif;
-    color: #FFFFFF;
+    background-color: #003366;
 }
 
-.game-container {
-    width: 80%;
-    height: 60%;
-    border: 1px solid #000;
-    margin-bottom: 20px;
-    margin-top: 40px;
-    border: solid;
+.pagina-menu {
+     /* Adjust to match your blue background */
+    color: white;
+    font-family: 'Arial', sans-serif; /* Modify according to your design */
+    text-align: center;
+    padding: 20px; /* Add padding if necessary */
 }
 
-.buttons-container {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-}
-
-    .buttons-container button {
-        flex: 1;
-        margin: 0 10px;
-        padding: 10px;
-        border: medium;
-        cursor: pointer;
-        background-color: #333;
-        color: #fff;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
+    .pagina-menu .logout-button {
+        color: white;
+        text-decoration: none;
+        /* Additional styling for the logout button */
     }
 
-        .buttons-container button:hover {
-            background-color: #0056b3;
+        .pagina-menu .logout-button:hover {
+            /* Hover effect for logout button */
         }
 
-
-.link-login {
-    text-decoration: underline;
-    color: #0000FF;
-    cursor: pointer;
-    font-size: 16px; 
-    font-weight: normal; 
-}
-
-   
-    .link-login:hover {
-        color: #FF0000; 
+    .pagina-menu .text-center h1 {
+        margin: 20px auto; /* Keep top and bottom margins, auto for left and right */
+        font-size: 3em; /* Adjust the font size as needed */
+        width: 80%; /* Set width to 80% of its container */
+        max-width: 1200px; /* Set a max-width if necessary */
+        text-align: center; /* Ensure text is centered if not full width */
+        margin-top: -55px;
+        /* Additional styling */
     }
 
-
-
-.logout-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #FFF; 
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    text-decoration:none;
-}
-
-    .logout-button:hover {
-        background-color: #555; 
+    .pagina-menu .game-container {
+        /* Styles for your game container */
     }
 
-.logout-icon {
-    margin-right: 5px; 
-}
+    .pagina-menu .buttons-container {
+        width: 80%; /* Set width to 80% of its container */
+        max-width: 1200px; /* Set a max-width if necessary */
+        margin: 0 auto; /* Center the buttons container */
+    }
 
-a.logout-button {
-    text-decoration: none;
-}
+        .pagina-menu .buttons-container a,
+        .pagina-menu .buttons-container button {
+            display: block;
+            width: 100%; /* Make buttons fill their container */
+            margin: 10px 0; /* Adjust vertical margin, remove horizontal */
+            padding: 20px; /* Increase padding for visual size */
+            background-color: transparent;
+            border: 2px solid white; /* Make border thicker for emphasis */
+            color: white;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 1.5em; /* Adjust font size as needed */
+            transition: transform 0.3s ease, color 0.3s ease;
+            box-sizing: border-box; /* Ensure padding and border are included in width */
+        }
 
+            .pagina-menu .buttons-container a:hover,
+            .pagina-menu .buttons-container button:hover {
+                transform: scale(1.1); /* Grow on hover */
+                color: #ffcc00; /* Change color on hover */
+                cursor: pointer;
+            }
+
+
+/* Add more custom styling as needed */
+
+
+
+
+/*Estilos pagina tienda */
 
 .body_tienda {
     background-color: #061249;/* Adjust the background color as needed */
@@ -326,6 +317,8 @@ a.logout-button {
 
 
 
+
+/*Estilos pagina scoreboard*/
 
 /* General body style */
 .body_score {
