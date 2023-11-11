@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using Newtonsoft.Json; // Si estás utilizando Newtonsoft.Json para la deserialización
+using Newtonsoft.Json;
 using System.Text;
 
 namespace FrontCrossyTec.Model
@@ -22,7 +21,7 @@ namespace FrontCrossyTec.Model
         {
             try
             {
-                var response = await _httpClient.GetAsync("api/Chest");
+                var response = await _httpClient.GetAsync("https://localhost:7173/api/Chest");
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
@@ -93,14 +92,11 @@ namespace FrontCrossyTec.Model
         }
     }
 
-    public class ChestDto
-    {
-        public int ChestId { get; set; }
-        public string ChestName { get; set; }
-        public decimal Price { get; set; }
-    }
+    // Resto de las clases como ChestDto, Login, RegistroUsuario, etc.
+}
 
-    public class Login
+
+public class Login
     {
         public string email { get; set; }
         public string password { get; set; }
@@ -121,4 +117,4 @@ namespace FrontCrossyTec.Model
         public string rol { get; set; } = "Player";
     }
 
-}
+
