@@ -1,39 +1,33 @@
 ﻿@page
 @model FrontCrossyTec.Pages.PaginaTiendaModel
 @{
-    ViewData["Title"] = "Tienda de Cajas";
+
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/estiloTienda.css" />
-</head>
-<body>
+<body class="body_tienda">
+    <div class="pagina-tienda">
+        <h1 class="text-center">Bienvenidos a Nuestra Tienda de Cajas</h1>
 
-    <h1 class="text-center">Bienvenidos a Nuestra Tienda de Cajas</h1>
-
-    <div class="container mt-5">
-        <div class="row">
-            @foreach (var caja in Model.cajas)
-            {
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <!-- Puedes agregar una imagen manualmente o desde la API -->
-                        <img src="@("/images/caja" + caja.ChestId + ".jpg")" class="card-img-top" alt="Imagen de la caja">
-
-                        <div class="card-body">
-                            <h5 class="card-title">@caja.ChestName</h5>
-                            <p class="card-text">Precio: $@caja.Price</p>
+        <div class="container mt-5">
+            <div class="row">
+                @foreach (var caja in Model.cajas)
+                {
+                    <div class="col-md-3 mb-4">
+                        <div class="card">
+                            <!-- las imagenes se leen con un for -->
+                            <img src="/images/caja/caja@(caja.ChestId).png" class="card-img-top" alt="Imagen de la caja">
+                            <div class="card-body">
+                                <h5 class="card-title">@caja.ChestName</h5>
+                                <!-- Replace this part with a button -->
+                                <button type="button" class="btn-comprar">
+                                    Comprar @($"${caja.Price}")
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
-
 </body>
-</html>
+

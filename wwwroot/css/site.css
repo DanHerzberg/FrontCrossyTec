@@ -241,3 +241,169 @@ label {
 a.logout-button {
     text-decoration: none;
 }
+
+
+.body_tienda {
+    background-color: #061249;/* Adjust the background color as needed */
+    color: #fff; /* Set text color to white or as needed */
+    font-family: 'Arial', sans-serif; /* Use a modern font */
+}
+
+.pagina-tienda .text-center {
+    text-align: center;
+    margin-bottom: -325px;
+    margin-top: -325px;
+    color: #ffcc00; /* Adjust the color to match the 'EVENT CASES' text */x
+}
+
+.pagina-tienda .container {
+    padding: 0 15px;
+}
+
+.pagina-tienda .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.pagina-tienda .col-md-3 {
+    position: relative;
+    width: 25%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.pagina-tienda .card {
+    background: transparent; /* Cards are transparent */
+    border: none; /* No borders on the card */
+    margin-bottom: 30px; /* Space between cards */
+}
+
+.pagina-tienda .card-img-top {
+    width: 100%;
+    height: auto;
+    border-radius: 0; /* No rounded corners on images */
+}
+
+.pagina-tienda .card-body {
+    text-align: center; /* Center card text */
+}
+
+.pagina-tienda .card-title {
+    color: #ffcc00; /* Adjust the color to match the case names */
+    margin-bottom: 15px;
+    font-size: 1.25rem; /* Adjust font-size as needed */
+}
+
+.pagina-tienda .card-text {
+    color: #fff; /* White text for the price */
+    font-size: 1rem; /* Adjust font-size as needed */
+}
+
+.pagina-tienda .btn-comprar {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    margin-top: 0.375rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #73c2fb; /* Azul tec */
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+    .pagina-tienda .btn-comprar:hover {
+        background-color: #22327b; /* Azul claro */
+        color: #ffffff; /* White text color on hover */
+    }
+
+
+
+
+/* General body style */
+.body_score {
+    font-family: 'Arial', sans-serif;
+    background-color: #22327b; /* Dark blue background */
+    color: #fff; /* White text for better contrast */
+    text-align: center;
+    padding: 20px;
+}
+
+/* Container for the leaderboard */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Style for the table */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    transition: transform 0.3s ease-in-out;
+    background-color: #fff; /* White background for table */
+    color: #22327b; /* Dark blue text for contrast */
+}
+
+    /* Style for the table headers */
+    .table th {
+        background-color: #84b6f4; /* Light blue for headers */
+        color: #fff; /* White text for headers */
+        font-weight: bold;
+        padding: 10px;
+        border: 1px solid #22327b;
+    }
+
+    /* Style for the table data */
+    .table td {
+        padding: 10px;
+        border: 1px solid #22327b;
+        transition: background-color 0.3s ease;
+        background-color: #fff; /* White background for cells */
+        color: #22327b; /* Dark blue text for cells */
+    }
+
+/* Striped rows for better readability */
+.table-striped tr:nth-child(even) {
+    background-color: #e8e8e8; /* Light grey for alternating rows */
+}
+
+/* Table header and rows hover effects */
+.table th:hover, .table td:hover {
+    background-color: #84b6f4; /* Light blue on hover */
+    color: #fff; /* White text on hover */
+}
+
+/* Title style */
+h2 {
+    color: #fff; /* White color for title */
+    font-size: 28px;
+    margin-bottom: 20px;
+    animation: fadeIn 2s;
+}
+
+/* Fade-in animation for the title */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scale animation for the table on hover */
+.table:hover {
+    transform: scale(1.02);
+}

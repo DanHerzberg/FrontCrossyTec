@@ -4,31 +4,26 @@
     ViewData["Title"] = "Leaderboard de Jugadores";
 }
 
-<body>
+
+<body class="body_score">
     <div class="container mt-5">
         <h2>Leaderboard de Jugadores</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Username</th>
+                    <th>Gamertag</th>
                     <th>Score</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Player1</td>
-                    <td>1500</td>
-                </tr>
-                <tr>
-                    <td>Player2</td>
-                    <td>1200</td>
-                </tr>
-                <tr>
-                    <td>Player3</td>
-                    <td>1100</td>
-                </tr>
-                <!-- Más jugadores... -->
+                @foreach (var player in Model.LeaderboardData)
+                {
+                    <tr>
+                        <td>@player.Name</td>
+                        <td>@player.TotalScore</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
-    </body>
+</body>
