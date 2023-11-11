@@ -235,7 +235,7 @@ label {
 /*Estilos pagina tienda */
 
 .body_tienda {
-    background-color: #061249;/* Adjust the background color as needed */
+    background-color: #003366; /* Adjust the background color as needed */
     color: #fff; /* Set text color to white or as needed */
     font-family: 'Arial', sans-serif; /* Use a modern font */
 }
@@ -323,7 +323,7 @@ label {
 /* General body style */
 .body_score {
     font-family: 'Arial', sans-serif;
-    background-color: #22327b; /* Dark blue background */
+    background-color: #003366; /* Dark blue background */
     color: #fff; /* White text for better contrast */
     text-align: center;
     padding: 20px;
