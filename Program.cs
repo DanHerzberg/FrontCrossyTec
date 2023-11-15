@@ -1,11 +1,18 @@
 using FrontCrossyTec.Model;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
+using System.Net.Http;
+using Microsoft.AspNetCore.Http; // Asegúrate de incluir esta directiva
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddHttpClient<ApiService>(client =>
 {
-    // Modificar esto a la direccion del puerto en el que esta la base de datos
+    // Modificar esto a la dirección del puerto en el que está la base de datos
     client.BaseAddress = new Uri("https://localhost:7173/");
 })
 .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
@@ -13,6 +20,17 @@ builder.Services.AddHttpClient<ApiService>(client =>
     // Ignorar errores de certificado SSL solo en desarrollo
     ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) => true
 });
+
+// Configurar la sesión de usuario
+builder.Services.AddSession(options =>
+{
+    // Configura las opciones de sesión aquí según tus necesidades
+    options.Cookie.Name = ".MyApp.Session";
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Duración de la sesión
+});
+
+// Registra IHttpContextAccessor
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -26,6 +44,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+// Agregar el middleware de sesión después de UseStaticFiles pero antes de UseRouting
+app.UseSession();
 
 app.UseRouting();
 

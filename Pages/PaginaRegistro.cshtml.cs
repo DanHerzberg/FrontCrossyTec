@@ -1,13 +1,13 @@
 using FrontCrossyTec.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
+using System;
+using System.Threading.Tasks;
 
 namespace FrontCrossyTec.Pages
 {
     public class PaginaRegistroModel : PageModel
     {
-
         private readonly ApiService _apiService;
 
         public PaginaRegistroModel(ApiService apiService)
@@ -17,7 +17,7 @@ namespace FrontCrossyTec.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            RegistroUsuario registroUsuario = new RegistroUsuario
+            var registroUsuario = new RegistroUsuario
             {
                 name = Request.Form["nombre"],
                 last_name = Request.Form["apellido"],
@@ -31,17 +31,17 @@ namespace FrontCrossyTec.Pages
                 rol = "Player"
             };
 
-            HttpResponseMessage response = await _apiService.RegisterAsync(registroUsuario);
+            bool registroExitoso = await _apiService.RegisterAsync(registroUsuario);
 
-            if (response.IsSuccessStatusCode)
+            if (registroExitoso)
             {
+                // Registro exitoso
                 return RedirectToPage("PaginaMenu");
             }
             else
             {
-                var errorResult = await response.Content.ReadAsStringAsync();
-                ModelState.AddModelError(string.Empty, $"Error en el registro: {errorResult}");
-
+                // Registro fallido
+                ModelState.AddModelError(string.Empty, "Error en el registro. Por favor, inténtalo nuevamente.");
                 return Page();
             }
         }

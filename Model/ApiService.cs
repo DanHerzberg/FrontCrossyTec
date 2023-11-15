@@ -10,10 +10,12 @@ namespace FrontCrossyTec.Model
     public class ApiService
     {
         private readonly HttpClient _httpClient;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ApiService(HttpClient httpClient)
+        public ApiService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = httpClient;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         // Método para obtener datos de Chest
@@ -65,20 +67,41 @@ namespace FrontCrossyTec.Model
             }
         }
 
-        public async Task<HttpResponseMessage> RegisterAsync(RegistroUsuario registroUsuario)
+
+
+        public async Task<bool> RegisterAsync(RegistroUsuario registroUsuario)
         {
             try
             {
                 string jsonRegistro = JsonConvert.SerializeObject(registroUsuario);
                 var content = new StringContent(jsonRegistro, Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync("api/RegisterUser", content);
-                return response;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<RegistroUsuarioResponse>(jsonResponse);
+
+                    // Guardar los datos del usuario en la sesión
+                    _httpContextAccessor.HttpContext.Session.SetString("UserId", result.UserId.ToString());
+                    _httpContextAccessor.HttpContext.Session.SetString("UserName", result.Name);
+                    // ... agrega más datos según tus necesidades
+
+                    return true; // Registro exitoso
+                }
+
+                // Puedes manejar el caso de registro fallido aquí si es necesario
+                return false;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+
+
+
 
         public async Task<HttpResponseMessage> LoginAsync(string email, string password)
         {
@@ -120,4 +143,3 @@ public class RegistroUsuario
     public string rol { get; set; } = "Player";
 }
 
-//javi le apesta la cola
