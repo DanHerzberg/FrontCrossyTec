@@ -1,18 +1,29 @@
 ﻿@page
 @model FrontCrossyTec.Pages.PaginaScoreboardModel
 @{
-    ViewData["Title"] = "Leaderboard de Jugadores";
+    ViewData["Title"] = "Tabla de Puntos de Jugadores";
 }
 
 
 <body class="body_score">
+    <div class="nav-score">
+        <span style="font-size:30px;cursor:pointer;align-content:normal" onclick="openNav()">☰ Menú</span>
+    </div>
+    <div id="navDrawer" class="nav-drawer">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a asp-page="/PaginaMenu">Inicio</a>
+        <a asp-page="/PaginaTienda">Tienda</a>
+        <a asp-page="/PaginaScoreboard">Scoreboard</a>
+        <a href="#">Ajustes</a>
+        <a href="Index" class="logout-button">Logout</a>
+    </div>
     <div class="container mt-5">
-        <h2>Leaderboard de Jugadores</h2>
+        <h2>Tabla de Puntos de Jugadores</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Gamertag</th>
-                    <th>Score</th>
+                    <th>Nombre de Usuario</th>
+                    <th>Puntos</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,4 +37,13 @@
             </tbody>
         </table>
     </div>
+    <script>function openNav() {
+            document.getElementById("navDrawer").style.left = "0";
+            document.body.classList.add("open");
+        }
+
+        function closeNav() {
+            document.getElementById("navDrawer").style.left = "-250px";
+            document.body.classList.remove("open");
+        }</script>
 </body>

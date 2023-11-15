@@ -5,20 +5,36 @@
 }
 
 <body class="body_tienda">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ Menú</span>
+    <div id="navDrawer" class="nav-drawer">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a asp-page="/PaginaMenu">Inicio</a>
+        <a asp-page="/PaginaTienda">Tienda</a>
+        <a asp-page="/PaginaScoreboard">Scoreboard</a>
+        <a href="#">Ajustes</a>
+        <a href="Index" class="logout-button">Logout</a>
+    </div>
+
     <div class="pagina-tienda">
         <h1 class="text-center">Bienvenidos a Nuestra Tienda de Cajas</h1>
 
+        <!-- Recuadro de TecCoins -->
+        <div class="teccoins-display">
+            <h3 style="display: inline-block; margin-right: 10px;">TecCoins:</h3>
+            <img src="images/moneda_di_oro.png" alt="Moneda" style="height: 50px; vertical-align: middle;">
+        </div>
+
+
+        <!-- Contenido existente de la tienda -->
         <div class="container mt-5">
             <div class="row">
                 @foreach (var caja in Model.cajas)
                 {
                     <div class="col-md-3 mb-4">
                         <div class="card">
-                            <!-- las imagenes se leen con un for -->
                             <img src="/images/caja/caja@(caja.ChestId).png" class="card-img-top" alt="Imagen de la caja">
                             <div class="card-body">
                                 <h5 class="card-title">@caja.ChestName</h5>
-                                <!-- Replace this part with a button -->
                                 <button type="button" class="btn-comprar">
                                     Comprar @($"${caja.Price}")
                                 </button>
@@ -29,4 +45,14 @@
             </div>
         </div>
     </div>
+
+    <script>function openNav() {
+            document.getElementById("navDrawer").style.left = "0";
+            document.body.classList.add("open");
+        }
+
+        function closeNav() {
+            document.getElementById("navDrawer").style.left = "-250px";
+            document.body.classList.remove("open");
+        }</script>
 </body>

@@ -96,25 +96,26 @@ namespace FrontCrossyTec.Model
 }
 
 
+
+
+
 public class Login
-    {
-        public string email { get; set; }
-        public string password { get; set; }
+{
+    public string email { get; set; }
+    public string password { get; set; }
 
-    }
+}
 
-    public class RegistroUsuario
-    {
-        public string name { get; set; }
-        public string last_name { get; set; }
-        public string email { get; set; }
-        public string gamertag { get; set; }
-        public string password { get; set; }
-        public DateTime birth_date { get; set; }
-        public string gender { get; set; }
-        public string state { get; set; }
-        public int coins { get; set; } = 0;
-        public string rol { get; set; } = "Player";
-    }
-
-
+public class RegistroUsuario
+{
+    public string name { get; set; }
+    public string last_name { get; set; }
+    public string email { get; set; }
+    public string gamertag { get; set; }
+    public string password { get; set; }
+    public DateTime birth_date { get; set; }
+    public string gender { get; set; }
+    public string state { get; set; }
+    public int coins { get; set; } = 0;
+    public string rol { get; set; } = "Player";
+}

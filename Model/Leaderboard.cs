@@ -28,6 +28,7 @@ namespace FrontCrossyTec.Model
         public static string ToJson(this List<Leaderboard> self) => JsonConvert.SerializeObject(self, FrontCrossyTec.Model.Converter.Settings);
     }
 
-    
+
 }
+
 

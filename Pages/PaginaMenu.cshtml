@@ -4,10 +4,18 @@
 }
 
 <body class="body-menu">
+    <div class="nav-menu">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ Menú</span>
+    </div>
+    <div id="navDrawer" class="nav-drawer">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a asp-page="/PaginaMenu">Inicio</a>
+        <a asp-page="/PaginaTienda">Tienda</a>
+        <a asp-page="/PaginaScoreboard">Scoreboard</a>
+        <a href="#">Ajustes</a>
+        <a href="Index" class="logout-button">Logout</a>
+    </div>
     <div class="pagina-menu">
-        <a href="Index" class="logout-button">
-            <span class="logout-icon">←</span>Logout
-        </a>
         <div class="text-center">
             <h1>Crossy Tec</h1>
             <div class="game-container">
@@ -15,9 +23,18 @@
             <div class="buttons-container">
                 <button>Jugar</button>
                 <a asp-page="PaginaTienda" class="btn btn-primary">Tienda</a>
-                <a asp-page="PaginaScoreboard" class="btn btn-primary">Scoreboard</a>
+                <a asp-page="PaginaScoreboard" class="btn btn-primary">Puntajes</a>
                 <button>Ajustes</button>
             </div>
         </div>
-        </div>
+    </div>
+    <script>function openNav() {
+            document.getElementById("navDrawer").style.left = "0";
+            document.body.classList.add("open");
+        }
+
+        function closeNav() {
+            document.getElementById("navDrawer").style.left = "-250px";
+            document.body.classList.remove("open");
+        }</script>
 </body>

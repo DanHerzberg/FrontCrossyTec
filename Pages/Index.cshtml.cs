@@ -6,7 +6,7 @@ namespace FrontCrossyTec.Pages
 {
     public class IndexModel : PageModel
     {
-       
+
         [BindProperty]
         public string Email { get; set; }
         [BindProperty]
@@ -16,7 +16,7 @@ namespace FrontCrossyTec.Pages
         public IndexModel(ApiService apiService)
         {
             _apiService = apiService;
-            
+
         }
 
         public async Task<IActionResult> OnPostAsync()

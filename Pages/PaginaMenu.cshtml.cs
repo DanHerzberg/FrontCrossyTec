@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FrontCrossyTec.Pages
 {
-	public class PaginaMenuModel : PageModel
+    public class PaginaMenuModel : PageModel
     {
-        
+
     }
 }
