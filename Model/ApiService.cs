@@ -119,3 +119,5 @@ public class RegistroUsuario
     public int coins { get; set; } = 0;
     public string rol { get; set; } = "Player";
 }
+
+//javi le apesta la cola
