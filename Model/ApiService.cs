@@ -69,7 +69,7 @@ namespace FrontCrossyTec.Model
 
 
 
-        public async Task<bool> RegisterAsync(RegistroUsuario registroUsuario)
+        public async Task<HttpResponseMessage> RegisterAsync(RegistroUsuario registroUsuario)
         {
             try
             {
@@ -86,18 +86,16 @@ namespace FrontCrossyTec.Model
                     _httpContextAccessor.HttpContext.Session.SetString("UserId", result.UserId.ToString());
                     _httpContextAccessor.HttpContext.Session.SetString("UserName", result.Name);
                     // ... agrega más datos según tus necesidades
-
-                    return true; // Registro exitoso
                 }
 
-                // Puedes manejar el caso de registro fallido aquí si es necesario
-                return false;
+                return response;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
 
 
 

@@ -31,9 +31,9 @@ namespace FrontCrossyTec.Pages
                 rol = "Player"
             };
 
-            bool registroExitoso = await _apiService.RegisterAsync(registroUsuario);
+            var response = await _apiService.RegisterAsync(registroUsuario);
 
-            if (registroExitoso)
+            if (response.IsSuccessStatusCode)
             {
                 // Registro exitoso
                 return RedirectToPage("PaginaMenu");
@@ -41,7 +41,8 @@ namespace FrontCrossyTec.Pages
             else
             {
                 // Registro fallido
-                ModelState.AddModelError(string.Empty, "Error en el registro. Por favor, inténtalo nuevamente.");
+                var errorResult = await response.Content.ReadAsStringAsync();
+                ModelState.AddModelError(string.Empty, $"Error en el registro: {errorResult}");
                 return Page();
             }
         }
