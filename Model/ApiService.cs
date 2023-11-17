@@ -23,7 +23,7 @@ namespace FrontCrossyTec.Model
         {
             try
             {
-                var response = await _httpClient.GetAsync("https://localhost:7173/api/Chest");
+                var response = await _httpClient.GetAsync("api/Chest");
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
@@ -47,7 +47,7 @@ namespace FrontCrossyTec.Model
         {
             try
             {
-                var response = await _httpClient.GetAsync("https://localhost:7173/api/Leaderboard");
+                var response = await _httpClient.GetAsync("api/Leaderboard");
 
                 if (response.IsSuccessStatusCode)
                 {

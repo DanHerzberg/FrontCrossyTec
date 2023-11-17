@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using FrontCrossyTec.Model;
-using Microsoft.AspNetCore.Http; // Agregar este using para IHttpContextAccessor
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FrontCrossyTec.Pages
@@ -10,20 +10,19 @@ namespace FrontCrossyTec.Pages
     {
         public List<Chest> cajas { get; private set; }
 
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ApiService _apiService;
 
-        public PaginaTiendaModel(IHttpContextAccessor httpContextAccessor)
+        public PaginaTiendaModel(ApiService apiService)
         {
-            _httpContextAccessor = httpContextAccessor;
+            _apiService = apiService;
         }
 
         public async Task OnGetAsync()
         {
-            var apiService = new ApiService(new HttpClient(), _httpContextAccessor);
-
             try
             {
-                cajas = await apiService.GetChestsAsync();
+                // Llama al método GetChestsAsync en ApiService
+                cajas = await _apiService.GetChestsAsync();
             }
             catch (Exception ex)
             {
