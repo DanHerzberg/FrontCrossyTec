@@ -25,5 +25,7 @@ namespace FrontCrossyTec.Pages
 
             // Obten más datos de sesión según tus necesidades
         }
+
+
     }
 }
