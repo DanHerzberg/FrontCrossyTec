@@ -85,6 +85,7 @@ namespace FrontCrossyTec.Model
                     // Guardar los datos del usuario en la sesión
                     _httpContextAccessor.HttpContext.Session.SetString("UserId", result.UserId.ToString());
                     _httpContextAccessor.HttpContext.Session.SetString("UserName", result.Name);
+                    _httpContextAccessor.HttpContext.Session.SetString("UserEmail", result.Email);
                     // ... agrega más datos según tus necesidades
                 }
 
@@ -109,8 +110,20 @@ namespace FrontCrossyTec.Model
 
             var response = await _httpClient.PostAsync("api/Login", content);
 
+            if (response.IsSuccessStatusCode)
+            {
+                // El inicio de sesión fue exitoso, deserializa la respuesta
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                var loginResponse = JsonConvert.DeserializeObject<UsuarioResponse>(jsonResponse);
+
+                // Guarda el correo electrónico en la sesión
+                _httpContextAccessor.HttpContext.Session.SetString("UserEmail", loginResponse.Email);
+            }
+
             return response;
         }
+
+
     }
 
     // Resto de las clases como ChestDto, Login, RegistroUsuario, etc.
@@ -126,6 +139,7 @@ public class Login
     public string password { get; set; }
 
 }
+
 
 public class RegistroUsuario
 {

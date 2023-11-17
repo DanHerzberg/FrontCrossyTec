@@ -9,6 +9,7 @@ namespace FrontCrossyTec.Pages
         private readonly IHttpContextAccessor _httpContextAccessor;
         public string UserId { get; private set; }
         public string UserName { get; private set; }
+        public string UserEmail { get; private set; }
         // Agrega más propiedades según los datos de sesión que desees mostrar
 
         public PruebaaaModel(IHttpContextAccessor httpContextAccessor)
@@ -20,6 +21,8 @@ namespace FrontCrossyTec.Pages
         {
             UserId = _httpContextAccessor.HttpContext.Session.GetString("UserId");
             UserName = _httpContextAccessor.HttpContext.Session.GetString("UserName");
+            UserEmail = _httpContextAccessor.HttpContext.Session.GetString("UserEmail"); // Obtiene el correo electrónico de la sesión
+
             // Obten más datos de sesión según tus necesidades
         }
     }
