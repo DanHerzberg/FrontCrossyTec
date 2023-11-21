@@ -124,30 +124,7 @@ namespace FrontCrossyTec.Model
         }
 
 
-        public async Task<Usuario> GetUserByEmailAsync(string email)
-        {
-            try
-            {
-                var response = await _httpClient.GetAsync($"api/User?email={email}");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var jsonContent = await response.Content.ReadAsStringAsync();
-                    var user = JsonConvert.DeserializeObject<Usuario>(jsonContent);
-                    return user;
-                }
-                else
-                {
-                    // Manejar el error de acuerdo a tus necesidades
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                // Manejar la excepción de acuerdo a tus necesidades
-                return null;
-            }
-        }
+       
 
 
     }
