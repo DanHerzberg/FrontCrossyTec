@@ -10,10 +10,12 @@ namespace FrontCrossyTec.Model
     public class ApiService
     {
         private readonly HttpClient _httpClient;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ApiService(HttpClient httpClient)
+        public ApiService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = httpClient;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         // Método para obtener datos de Chest
@@ -88,8 +90,43 @@ namespace FrontCrossyTec.Model
 
             var response = await _httpClient.PostAsync("api/Login", content);
 
+            if (response.IsSuccessStatusCode)
+            {
+                var userEmail = email;
+                _httpContextAccessor.HttpContext.Response.Cookies.Append("UserEmail", userEmail);
+            }
+
             return response;
         }
+
+        public async Task<int> GetUserCoinsAsync()
+        {
+            try
+            {
+                var email = _httpContextAccessor.HttpContext.Request.Cookies["UserEmail"];
+                if (string.IsNullOrEmpty(email))
+                {
+                    throw new Exception("No se encontró el correo electrónico del usuario en las cookies.");
+                }
+
+                var response = await _httpClient.GetAsync($"https://localhost:7173/api/GetUserCoins?email={email}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<int>(content);
+                }
+                else
+                {
+                    throw new Exception($"Error al obtener monedas: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en la solicitud HTTP: {ex.Message}");
+            }
+        }
+
+
     }
 
     // Resto de las clases como ChestDto, Login, RegistroUsuario, etc.

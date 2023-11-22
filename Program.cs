@@ -3,9 +3,10 @@ using FrontCrossyTec.Model;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
+builder.Services.AddHttpContextAccessor(); // Agregar IHttpContextAccessor
 builder.Services.AddHttpClient<ApiService>(client =>
 {
-    // Modificar esto a la direccion del puerto en el que esta la base de datos
+    // Modificar esto a la dirección del puerto en el que está la base de datos
     client.BaseAddress = new Uri("https://localhost:7173/");
 })
 .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler

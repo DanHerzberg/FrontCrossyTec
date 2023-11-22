@@ -9,18 +9,21 @@ namespace FrontCrossyTec.Pages
     public class PaginaTiendaModel : PageModel
     {
         public List<Chest> cajas { get; private set; }
+        public int UserCoins { get; private set; }
 
         public async Task OnGetAsync()
         {
-            var apiService = new ApiService(new HttpClient());
+            var apiService = new ApiService(new HttpClient(), new HttpContextAccessor());
 
             try
             {
                 cajas = await apiService.GetChestsAsync();
+                UserCoins = await apiService.GetUserCoinsAsync();
             }
             catch (Exception ex)
             {
-                // Manejar errores aquí según tus necesidades
+                throw ex;
+              
             }
         }
     }
