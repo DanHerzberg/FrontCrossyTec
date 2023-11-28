@@ -473,10 +473,62 @@ h2 {
     text-align: left;
 }
 
+/* Estilos globales para la página de perfil */
+.perfil-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #142c6d; /* Color de fondo del contenedor */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Asegura que los hijos no sobresalgan de los bordes redondeados */
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+}
+
+/* Estilos de la cabecera del perfil */
+.perfil-header {
+    background-color: #0d1f48; /* Un azul más oscuro para contrastar con el contenedor */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilos de la imagen de perfil */
 .profile-picture {
-    width: 150px; /* or any other dimensions you prefer */
+    display: block;
+    width: 150px; /* Dimensiones especificadas para la imagen */
     height: 150px;
-    border-radius: 50%; /* makes the image round */
-    object-fit: cover; /* ensures the image covers the area without being stretched */
-    border: 2px solid #fff; /* optional: adds a white border around the image */
+    margin: -75px auto 10px; /* Ajusta el margen para alinear la imagen con el borde del contenedor */
+    border: 2px solid #ffffff; /* Borde blanco para que destaque sobre el fondo azul */
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin ser estirada */
+    background-color: #fff; /* Fondo blanco por defecto */
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+/* Estilos de la información del perfil */
+.perfil-info {
+    padding: 20px;
+    background-color: #1c3f95; /* Color de fondo para la información */
+}
+
+    /* Estilos para los párrafos y la información fuerte */
+    .perfil-info p {
+        background-color: #0d1f48; /* Fondo para cada elemento de información */
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        color: #fff; /* Set text color to white or as needed */
+        font-family: 'Arial', sans-serif; /* Use a modern font */
+    }
+
+        .perfil-info p strong {
+            color: #a2c4fc; /* Un azul claro para resaltar las etiquetas */
+        }
+
+.body-perfil {
+    background-color: #003366;
+    color: #fff; /* Set text color to white or as needed */
+    font-family: 'Arial', sans-serif; /* Use a modern font */
 }
