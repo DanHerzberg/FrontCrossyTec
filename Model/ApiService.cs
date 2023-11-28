@@ -127,6 +127,36 @@ namespace FrontCrossyTec.Model
         }
 
 
+        public async Task<User> GetUserInfoAsync()
+{
+    try
+    {
+        var email = _httpContextAccessor.HttpContext.Request.Cookies["UserEmail"];
+        if (string.IsNullOrEmpty(email))
+        {
+            throw new Exception("No se encontró el correo electrónico del usuario en las cookies.");
+        }
+
+        var response = await _httpClient.GetAsync($"/api/User?email={email}");
+        if (response.IsSuccessStatusCode)
+        {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var users = JsonConvert.DeserializeObject<List<User>>(content);
+                    return users.FirstOrDefault(); // Retorna el primer usuario o null si no hay ninguno
+                }
+        else
+        {
+            throw new Exception($"Error al obtener la información del usuario: {response.StatusCode}");
+        }
+    }
+    catch (Exception ex)
+    {
+        throw new Exception($"Error en la solicitud HTTP: {ex.Message}");
+    }
+}
+
+
+
     }
 
     // Resto de las clases como ChestDto, Login, RegistroUsuario, etc.
