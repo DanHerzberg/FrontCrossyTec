@@ -23,7 +23,7 @@ namespace FrontCrossyTec.Model
         {
             try
             {
-                var response = await _httpClient.GetAsync("https://localhost:7173/api/Chest");
+                var response = await _httpClient.GetAsync("/api/Chest");
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
@@ -47,7 +47,7 @@ namespace FrontCrossyTec.Model
         {
             try
             {
-                var response = await _httpClient.GetAsync("https://localhost:7173/api/Leaderboard");
+                var response = await _httpClient.GetAsync("/api/Leaderboard");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -109,7 +109,7 @@ namespace FrontCrossyTec.Model
                     throw new Exception("No se encontró el correo electrónico del usuario en las cookies.");
                 }
 
-                var response = await _httpClient.GetAsync($"https://localhost:7173/api/GetUserCoins?email={email}");
+                var response = await _httpClient.GetAsync($"/api/GetUserCoins?email={email}");
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();

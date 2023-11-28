@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using FrontCrossyTec.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
 
 namespace FrontCrossyTec.Pages
 {
@@ -10,20 +10,24 @@ namespace FrontCrossyTec.Pages
     {
         public List<Chest> cajas { get; private set; }
         public int UserCoins { get; private set; }
+        private readonly ApiService _apiService;
+
+        public PaginaTiendaModel(ApiService apiService)
+        {
+            _apiService = apiService;
+        }
 
         public async Task OnGetAsync()
         {
-            var apiService = new ApiService(new HttpClient(), new HttpContextAccessor());
-
             try
             {
-                cajas = await apiService.GetChestsAsync();
-                UserCoins = await apiService.GetUserCoinsAsync();
+                // Llama al método GetChestsAsync en ApiService
+                cajas = await _apiService.GetChestsAsync();
+                UserCoins = await _apiService.GetUserCoinsAsync();
             }
             catch (Exception ex)
             {
-                throw ex;
-              
+                // Manejar errores aquí según tus necesidades
             }
         }
     }
