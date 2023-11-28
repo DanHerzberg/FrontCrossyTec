@@ -472,3 +472,11 @@ h2 {
 .nav-score {
     text-align: left;
 }
+
+.profile-picture {
+    width: 150px; /* or any other dimensions you prefer */
+    height: 150px;
+    border-radius: 50%; /* makes the image round */
+    object-fit: cover; /* ensures the image covers the area without being stretched */
+    border: 2px solid #fff; /* optional: adds a white border around the image */
+}
