@@ -160,9 +160,13 @@ label {
 }
 
 .error-message {
-    color: red;
-    opacity: 0;
-    animation: slideFadeIn 0.5s forwards;
+    color: red; /* Color del texto */
+    background-color: #ffe0e0; /* Color de fondo */
+    border: 1px solid red; /* Borde del mensaje */
+    padding: 10px; /* Espaciado interno */
+    margin-top: 15px; /* Espaciado externo arriba */
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center; /* Alineación del texto */
 }
 
 /*Estilos Main Menu*/
