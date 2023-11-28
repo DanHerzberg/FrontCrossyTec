@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using FrontCrossyTec.Model;
+using Newtonsoft.Json;
 
 namespace FrontCrossyTec.Pages
 {
@@ -26,8 +27,23 @@ namespace FrontCrossyTec.Pages
             if (response.IsSuccessStatusCode)
             {
                 // El inicio de sesión fue exitoso, redirige al usuario al menú principal
-                return RedirectToPage("PaginaMenu");
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var loginResponse = JsonConvert.DeserializeObject<LoginResponseDto>(responseContent);
+
+                if (loginResponse.Rol == "Player")
+                {
+                    return RedirectToPage("PaginaMenu");
+                }
+                else if (loginResponse.Rol == "admin")
+                {
+                    return RedirectToPage("PaginaAdmin");
+                }
+                else
+                {
+                    return Page();
+                }
             }
+           
             else
             {
                 // El inicio de sesión falló, muestra un mensaje de error

@@ -128,7 +128,7 @@ namespace FrontCrossyTec.Model
 
 
         public async Task<User> GetUserInfoAsync()
-{
+        {
     try
     {
         var email = _httpContextAccessor.HttpContext.Request.Cookies["UserEmail"]; 
@@ -155,6 +155,55 @@ namespace FrontCrossyTec.Model
     }
 }
 
+        public async Task<List<UserCountByStateDto>> GetUserCountsByStateAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("https://localhost:7173/api/UserCountsByState");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<UserCountByStateDto>>(content);
+                }
+                else
+                {
+                    throw new Exception($"Error al obtener el conteo de usuarios por estado: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en la solicitud HTTP: {ex.Message}");
+            }
+        }
+
+
+        public async Task<List<UserAgeDto>> GetUserAgesAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("api/UserAges");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<UserAgeDto>>(content);
+                }
+                else
+                {
+                    throw new Exception($"Error al obtener el conteo de usuarios por edad: {response.StatusCode}");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en la solicitud HTTP: {ex.Message}");
+            }
+        }
+
+
+
+
+
+
 
 
     }
@@ -163,7 +212,12 @@ namespace FrontCrossyTec.Model
 }
 
 
-
+public class LoginResponseDto
+{
+    public string Email { get; set; }
+    public string Message { get; set; }
+    public string Rol { get; set; }
+}
 
 
 public class Login
@@ -187,4 +241,15 @@ public class RegistroUsuario
     public string rol { get; set; } = "Player";
 }
 
-//javi le apesta la cola
+public class UserCountByStateDto
+{
+    public string State { get; set; }
+    public int UserCount { get; set; }
+}
+
+public class UserAgeDto
+{
+    public int Age { get; set; }
+    public int UserCount { get; set; }
+}
+
