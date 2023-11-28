@@ -199,7 +199,7 @@ namespace FrontCrossyTec.Model
             }
         }
 
-        public async Task<List<ItemChest>> GetItemChestAsync(int id)
+        public async Task<List<ItemChest>> GetItemChestAsync(long id)
         {
             try
             {
