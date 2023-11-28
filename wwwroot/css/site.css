@@ -532,3 +532,29 @@ h2 {
     color: #fff; /* Set text color to white or as needed */
     font-family: 'Arial', sans-serif; /* Use a modern font */
 }
+
+.caja-interactiva:hover {
+    cursor: pointer;
+    /* Opcional: agrega algún efecto visual como un ligero aumento de tamaño, sombra, etc. */
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.cofre-detalles {
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background-color: rgba(255, 255, 255, 0.8); /* Blanco con transparencia */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: none; /* Asegúrate de que inicialmente esté oculto */
+    color: #003366; /* Color del texto */
+    align-content: center;
+}
+
+.nombre-articulo {
+    color: #003366; /* Color del texto */
+    font-family: Arial, sans-serif; /* Tipo de fuente */
+    font-size: 14px; /* Tamaño de la fuente */
+    
+}
