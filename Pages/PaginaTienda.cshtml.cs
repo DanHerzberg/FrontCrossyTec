@@ -27,7 +27,7 @@ namespace FrontCrossyTec.Pages
             }
             catch (Exception ex)
             {
-                // Manejar errores aquí según tus necesidades
+                
             }
         }
     }
