@@ -5,19 +5,44 @@
     ViewData["Title"] = "Perfil del Usuario";
 }
 
-<div class="perfil-container">
-    <div class="perfil-header">
-        <h1>Perfil del Usuario</h1>
-    </div>
-    <div class="perfil-info">
-        <!-- Profile Picture -->
-        <img src="~/path_to_your_image_folder/default_profile_picture.jpg" alt="Profile Picture" class="profile-picture" />
 
-        <!-- User Information -->
-        <p><strong>Nombre de Usuario:</strong> @Model.UserData.Name</p>
-        <p><strong>Correo:</strong> @Model.UserData.Email</p>
-        <p><strong>Estado:</strong> @Model.UserData.State</p>
-        <p><strong>Edad:</strong> @Model.UserAge años</p>
+
+<body class="body-perfil">
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ Menú</span>
+    <div id="navDrawer" class="nav-drawer">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a asp-page="/PaginaMenu">Inicio</a>
+        <a asp-page="/PaginaTienda">Tienda</a>
+        <a asp-page="/PaginaScoreboard">Scoreboard</a>
+        <a asp-page="/PaginaPerfil">Perfil</a>
+        <a href="Index" class="logout-button">Logout</a>
     </div>
-</div>
+
+    <div class="perfil-container">
+        <div class="perfil-header">
+            <h1>Perfil del Usuario</h1>
+        </div>
+        <div class="perfil-info">
+            <!-- Profile Picture -->
+            <img src="images/fbpic.jpeg" alt="Profile Picture" class="profile-picture" />
+
+            <!-- User Information -->
+            <p><strong>Nombre de Usuario:</strong> @Model.UserData.Name</p>
+            <p><strong>Correo:</strong> @Model.UserData.Email</p>
+            <p><strong>Estado:</strong> @Model.UserData.State</p>
+            <p><strong>Edad:</strong> @Model.UserAge años</p>
+        </div>
+    </div>
+
+    <script>function openNav() {
+            document.getElementById("navDrawer").style.left = "0";
+            document.body.classList.add("open");
+        }
+
+        function closeNav() {
+            document.getElementById("navDrawer").style.left = "-250px";
+            document.body.classList.remove("open");
+        }</script>
+</body>
 
