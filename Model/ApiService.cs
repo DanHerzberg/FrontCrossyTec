@@ -131,7 +131,7 @@ namespace FrontCrossyTec.Model
 {
     try
     {
-        var email = _httpContextAccessor.HttpContext.Request.Cookies["UserEmail"];
+        var email = _httpContextAccessor.HttpContext.Request.Cookies["UserEmail"]; 
         if (string.IsNullOrEmpty(email))
         {
             throw new Exception("No se encontró el correo electrónico del usuario en las cookies.");

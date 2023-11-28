@@ -10,9 +10,14 @@
         <h1>Perfil del Usuario</h1>
     </div>
     <div class="perfil-info">
+        <!-- Profile Picture -->
+        <img src="~/path_to_your_image_folder/default_profile_picture.jpg" alt="Profile Picture" class="profile-picture" />
+
+        <!-- User Information -->
         <p><strong>Nombre de Usuario:</strong> @Model.UserData.Name</p>
         <p><strong>Correo:</strong> @Model.UserData.Email</p>
         <p><strong>Estado:</strong> @Model.UserData.State</p>
         <p><strong>Edad:</strong> @Model.UserAge años</p>
     </div>
 </div>
+
