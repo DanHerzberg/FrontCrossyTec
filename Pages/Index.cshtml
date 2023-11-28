@@ -27,11 +27,22 @@
                 </div>
             </form>
 
+
             <div class="container_signup">
                 <a href="PaginaRegistro">
                     <button type="button">Crear cuenta nueva</button>
                 </a>
             </div>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="error-message">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <p>@error.ErrorMessage</p>
+                    }
+                </div>
+            }
 
         </div>
     </div>
