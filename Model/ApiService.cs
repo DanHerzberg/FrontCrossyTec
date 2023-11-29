@@ -159,7 +159,7 @@ namespace FrontCrossyTec.Model
         {
             try
             {
-                var response = await _httpClient.GetAsync("https://localhost:7173/api/UserCountsByState");
+                var response = await _httpClient.GetAsync("api/UserCountsByState");
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
