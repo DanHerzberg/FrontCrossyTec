@@ -264,15 +264,38 @@ namespace FrontCrossyTec.Model
             }
         }
 
+        public async Task<bool> ActualizarMonedasUsuarioAsync(int newCoins)
+        {
+            try
+            {
+                var email = _httpContextAccessor.HttpContext.Request.Cookies["UserEmail"];
+                if (string.IsNullOrEmpty(email))
+                {
+                    throw new Exception("No se encontró el correo electrónico del usuario en las cookies.");
+                }
 
+                var response = await _httpClient.PutAsync($"/api/UpdateUserCoins?email={email}&newCoins={newCoins}", null);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true; // La actualización fue exitosa
+                }
+                else
+                {
+                    // Manejar los diferentes códigos de estado HTTP aquí
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Loguear el error o manejarlo según corresponda
+                throw new Exception($"Error al actualizar las monedas del usuario: {ex.Message}");
+            }
+        }
 
-
-
-
-
-
-
-
+        internal Task<bool> ActualizarMonedasUsuarioAsync(long v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     // Resto de las clases como ChestDto, Login, RegistroUsuario, etc.
