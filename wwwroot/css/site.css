@@ -489,7 +489,8 @@ h2 {
     font-weight: bold;
     margin: 30px 0;
     font-family: 'Heebo', sans-serif;
-=======
+}
+
 /* Estilos globales para la página de perfil */
 .perfil-container {
     width: 80%;
@@ -548,5 +549,5 @@ h2 {
     background-color: #003366;
     color: #fff; /* Set text color to white or as needed */
     font-family: 'Arial', sans-serif; /* Use a modern font */
->>>>>>> b2d3ad77c77a337bbdd6c97b8d0eea18f9fc22ad
+
 }
