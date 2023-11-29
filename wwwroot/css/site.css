@@ -575,3 +575,29 @@ h2 {
     font-family: Arial, sans-serif; /* Tipo de fuente */
     font-size: 14px; /* Tamaño de la fuente */
 }
+
+.logoutAdmin-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: #003366;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+    .logoutAdmin-button:hover {
+        background-color: #0056b3;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .logoutAdmin-button:active {
+        background-color: #00408b;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .boton-admin{
+        margin-top:50px;
+    }
