@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -199,6 +199,22 @@ namespace FrontCrossyTec.Model
             }
         }
 
+
+        public async Task<List<ItemChest>> GetItemChestAsync(long id)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"/api/OptionsItems/{id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<ItemChest>>(content);
+                }
+                else
+                {
+                    throw new Exception($"Error al obtener el objeto ItemChest: {response.StatusCode}");
+                }
+
         public async Task<List<UserGenderDto>> GetUserGendersAsync()
         {
             try
@@ -214,12 +230,16 @@ namespace FrontCrossyTec.Model
                     throw new Exception($"Error al obtener el conteo de usuarios por genero: {response.StatusCode}");
                 }
 
+
             }
             catch (Exception ex)
             {
                 throw new Exception($"Error en la solicitud HTTP: {ex.Message}");
             }
         }
+
+    
+
 
         public async Task<List<CoinsStateDto>> GetCoinsByStateAsync()
         {
@@ -247,12 +267,7 @@ namespace FrontCrossyTec.Model
 
 
 
-
-
-
-
-
-    }
+}
 
     // Resto de las clases como ChestDto, Login, RegistroUsuario, etc.
 }
