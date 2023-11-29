@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -199,6 +199,7 @@ namespace FrontCrossyTec.Model
             }
         }
 
+
         public async Task<List<ItemChest>> GetItemChestAsync(long id)
         {
             try
@@ -213,13 +214,57 @@ namespace FrontCrossyTec.Model
                 {
                     throw new Exception($"Error al obtener el objeto ItemChest: {response.StatusCode}");
                 }
+
+        public async Task<List<UserGenderDto>> GetUserGendersAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("api/UserGenders");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<UserGenderDto>>(content);
+                }
+                else
+                {
+                    throw new Exception($"Error al obtener el conteo de usuarios por genero: {response.StatusCode}");
+                }
+
+
             }
             catch (Exception ex)
             {
                 throw new Exception($"Error en la solicitud HTTP: {ex.Message}");
             }
         }
+
     
+
+
+        public async Task<List<CoinsStateDto>> GetCoinsByStateAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("api/CoinsByState");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<CoinsStateDto>>(content);
+                }
+                else
+                {
+                    throw new Exception($"Error al obtener el conteo de monedas por estado: {response.StatusCode}");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en la solicitud HTTP: {ex.Message}");
+            }
+        }
+
+
+
 
 
 }
@@ -268,4 +313,17 @@ public class UserAgeDto
     public int Age { get; set; }
     public int UserCount { get; set; }
 }
+
+public class UserGenderDto
+{
+    public string Gender { get; set; }
+    public int UserCount { get; set; }
+}
+
+public class CoinsStateDto
+{
+    public string State { get; set; }
+    public int TotalCoins { get; set; }
+}
+
 
