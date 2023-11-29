@@ -85,39 +85,16 @@
             }</script>
 
         <script>
-    function confirmarCompra(chestId, price) {
-        if (confirm("¿Estás seguro de que quieres comprar esta caja?")) {
-            if (@Model.UserCoins >= price) {
-                // Calcula las monedas restantes después de la compra
-                var newCoinAmount = @Model.UserCoins - price;
-
-                // Llamada a la API para actualizar las monedas del usuario
-                fetch(`/api/UpdateUserCoins?email=${encodeURIComponent(userEmail)}&newCoins=${newCoinAmount}`, {
-                    method: 'PUT'
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Recargar la página o actualizar la interfaz de usuario
-                        // Por ejemplo, puedes recargar la página para actualizar los datos:
-                        location.reload();
-
-                        // O puedes actualizar la interfaz de usuario directamente aquí
-                        // Por ejemplo: document.getElementById('id_del_elemento').innerText = newCoinAmount;
-
-                        // Mostrar mensaje de compra exitosa
-                        alert("Compra realizada con éxito. Tus monedas han sido actualizadas.");
-                    } else {
-                        alert("Error al realizar la compra.");
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al realizar la compra:', error);
-                });
-            } else {
-                alert("Saldo insuficiente para realizar esta compra.");
-            }
+            function confirmarCompra(chestId, price) {
+            if (confirm("¿Estás seguro de que quieres comprar esta caja?")) {
+                if (@Model.UserCoins >= price) {
+                    // Llamada a la api para actualizar las monedas del usuario
+                    // Recargar la página o actualizar la interfaz de usuario para reflejar el cambio
+                    // Mostrar mensaje de compra exitosa 
+                } else {
+                    alert("Saldo insuficiente para realizar esta compra.");
+                }
+             }
         }
-    }
         </script>
-
 </body>
