@@ -40,7 +40,7 @@
                                  onmouseout="hideItems('@caja.ChestId')">
                             <div class="card-body">
                                 <h5 class="card-title">@caja.ChestName</h5>
-                                <button type="button" class="btn-comprar">
+                                <button type="button" class="btn-comprar" onclick="confirmarCompra(@caja.ChestId, @caja.Price)">
                                     Comprar @($"${caja.Price}")
                                 </button>
                             </div>
@@ -83,4 +83,41 @@
                 document.getElementById("navDrawer").style.left = "-250px";
                 document.body.classList.remove("open");
             }</script>
+
+        <script>
+    function confirmarCompra(chestId, price) {
+        if (confirm("¿Estás seguro de que quieres comprar esta caja?")) {
+            if (@Model.UserCoins >= price) {
+                // Calcula las monedas restantes después de la compra
+                var newCoinAmount = @Model.UserCoins - price;
+
+                // Llamada a la API para actualizar las monedas del usuario
+                fetch(`/api/UpdateUserCoins?email=${encodeURIComponent(userEmail)}&newCoins=${newCoinAmount}`, {
+                    method: 'PUT'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Recargar la página o actualizar la interfaz de usuario
+                        // Por ejemplo, puedes recargar la página para actualizar los datos:
+                        location.reload();
+
+                        // O puedes actualizar la interfaz de usuario directamente aquí
+                        // Por ejemplo: document.getElementById('id_del_elemento').innerText = newCoinAmount;
+
+                        // Mostrar mensaje de compra exitosa
+                        alert("Compra realizada con éxito. Tus monedas han sido actualizadas.");
+                    } else {
+                        alert("Error al realizar la compra.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al realizar la compra:', error);
+                });
+            } else {
+                alert("Saldo insuficiente para realizar esta compra.");
+            }
+        }
+    }
+        </script>
+
 </body>
