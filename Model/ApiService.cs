@@ -243,6 +243,27 @@ namespace FrontCrossyTec.Model
             }
         }
 
+        public async Task<List<ItemChest>> GetItemChestAsync(long id)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"/api/OptionsItems/{id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<ItemChest>>(content);
+                }
+                else
+                {
+                    throw new Exception($"Error al obtener el objeto ItemChest: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en la solicitud HTTP: {ex.Message}");
+            }
+        }
+
 
 
 
