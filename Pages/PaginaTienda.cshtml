@@ -40,9 +40,12 @@
                                  onmouseout="hideItems('@caja.ChestId')">
                             <div class="card-body">
                                 <h5 class="card-title">@caja.ChestName</h5>
-                                <button type="button" class="btn-comprar" onclick="confirmarCompra(@caja.ChestId, @caja.Price)">
-                                    Comprar @($"${caja.Price}")
-                                </button>
+                                <form method="post" asp-page-handler="ComprarCaja">
+                                    <input type="hidden" name="price" value="@caja.Price" />
+                                    <button type="submit" onclick="return confirmarCompra(@caja.Price);">
+                                        Comprar @($"${caja.Price}")
+                                    </button>
+                                </form>
                             </div>
 
                             <!-- Div que contiene los artículos del cofre -->
@@ -85,16 +88,14 @@
             }</script>
 
         <script>
-            function confirmarCompra(chestId, price) {
-            if (confirm("¿Estás seguro de que quieres comprar esta caja?")) {
+            function confirmarCompra(price) {
                 if (@Model.UserCoins >= price) {
-                    // Llamada a la api para actualizar las monedas del usuario
-                    // Recargar la página o actualizar la interfaz de usuario para reflejar el cambio
-                    // Mostrar mensaje de compra exitosa 
+                    return confirm("¿Estás seguro de que quieres comprar esta caja?");
                 } else {
                     alert("Saldo insuficiente para realizar esta compra.");
+                    return false;
                 }
-             }
-        }
+            }
         </script>
+
 </body>

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using FrontCrossyTec.Model;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FrontCrossyTec.Pages
@@ -24,6 +25,7 @@ namespace FrontCrossyTec.Pages
         {
             try
             {
+                
                 // Llama al método GetChestsAsync en ApiService
                 cajas = await _apiService.GetChestsAsync();
                 UserCoins = await _apiService.GetUserCoinsAsync();
@@ -38,6 +40,34 @@ namespace FrontCrossyTec.Pages
 
             }
         }
+
+        public async Task<IActionResult> OnPostComprarCajaAsync(int price)
+        {
+            UserCoins = await _apiService.GetUserCoinsAsync();
+            if (UserCoins >= price)
+            {
+                int newCoinTotal = UserCoins - price;
+
+                // Aquí llamarías a ApiService para actualizar la cantidad de monedas en la base de datos
+                var exito = await _apiService.ActualizarMonedasUsuarioAsync(newCoinTotal);
+                if (exito)
+                {
+                    // Actualizar la interfaz de usuario o recargar la página
+                    return RedirectToPage(new { compraExitosa = true });
+                }
+                else
+                {
+                    // Manejar el caso de error
+                    return RedirectToPage(new { error = "Error al actualizar las monedas." });
+                }
+            }
+            else
+            {
+                // Manejar el caso de saldo insuficiente
+                return RedirectToPage(new { error = "Saldo insuficienteeeee." });
+            }
+        }
+
 
     }
 }
