@@ -32,45 +32,27 @@
                 {
                     <div class="col-md-3 mb-4">
                         <div class="card">
-                            <!-- Imagen de la caja con eventos onmouseover y onmouseout -->
-                            <img src="/images/caja/caja@(caja.ChestId).png"
-                                 class="card-img-top caja-interactiva"
-                                 alt="Imagen de la caja"
-                                 onmouseover="showItems('@caja.ChestId')"
-                                 onmouseout="hideItems('@caja.ChestId')">
+                            <img src="/images/caja/caja@(caja.ChestId).png" class="card-img-top" alt="Imagen de la caja">
                             <div class="card-body">
                                 <h5 class="card-title">@caja.ChestName</h5>
                                 <button type="button" class="btn-comprar">
                                     Comprar @($"${caja.Price}")
                                 </button>
                             </div>
-
-                            <!-- Div que contiene los artículos del cofre -->
-                            <div id="items-@caja.ChestId" class="cofre-detalles" style="display: none;">
-                                <h6>Artículos:</h6>
-                                @foreach (var item in Model.ItemsPorCaja[caja.ChestId])
-                                {
-                                    <p class="nombre-articulo">@item.ItemName</p>
-                                }
-                            </div>
                         </div>
                     </div>
                 }
             </div>
         </div>
+    </div>
 
-        <!-- Script para mostrar y ocultar los artículos -->
-        <script>function showItems(cofreId) {
-                var itemsDiv = document.getElementById('items-' + cofreId);
-                if (itemsDiv) {
-                    itemsDiv.style.display = 'block';
-                }
-            }
+    <script>function openNav() {
+            document.getElementById("navDrawer").style.left = "0";
+            document.body.classList.add("open");
+        }
 
-            function hideItems(cofreId) {
-                var itemsDiv = document.getElementById('items-' + cofreId);
-                if (itemsDiv) {
-                    itemsDiv.style.display = 'none';
-                }
-            }</script>
+        function closeNav() {
+            document.getElementById("navDrawer").style.left = "-250px";
+            document.body.classList.remove("open");
+        }</script>
 </body>
