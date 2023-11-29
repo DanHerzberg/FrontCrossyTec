@@ -55,86 +55,30 @@
         });
 
     </script>
-    <script>
-        var genderData = @Html.Raw(Json.Serialize(Model.UserCountsByGender));
-        var ctx = document.getElementById('genderDistributionChart').getContext('2d');
-        var genderChart = new Chart(ctx, {
-            type: 'pie', // Un gráfico de pastel podría ser adecuado para mostrar distribuciones
-            data: {
-                labels: genderData.map(g => g.gender),
-                datasets: [{
-                    data: genderData.map(g => g.userCount),
-                    backgroundColor: [
-                        // Colores para cada segmento del gráfico de pastel
-                        '#FF6384',
-                        '#36A2EB',
-                        '#FFCE56'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Distribución de Género'
-                    }
-                }
-            }
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var ctx = document.getElementById('coinsByStateChart').getContext('2d');
-            var coinsByStateChart = new Chart(ctx, {
-                type: 'line', // Un gráfico de barras para representar las monedas por estado
-                data: {
-                    labels: @Html.Raw(Json.Serialize(Model.CoinsByState.Select(x => x.State))),
-                    datasets: [{
-                        label: 'Monedas por Estado',
-                        data: @Html.Raw(Json.Serialize(Model.CoinsByState.Select(x => x.TotalCoins))),
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        });
-    </script>
 
 }
 
-<h5 class="page-title">Panel de Administrador</h5>
+<h5>Pagina Admin</h5>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
-            <h3 class="chart-title">Usuarios por estado</h3>
+            <h3>Usuarios por estado</h3>
             <canvas id="stateUserChart" width="400" height="400"></canvas>
         </div>
         <div class="col-md-6">
-            <h3 class="chart-title">Edades de los usuarios</h3>
+            <h3>Edades de los usuarios</h3>
             <canvas id="ageDistributionChart" width="400" height="400"></canvas>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <h3 class="chart-title">Generos de los usuarios</h3>
-            <canvas id="genderDistributionChart" width="400" height="400"></canvas>
+            <h3>Título de la Gráfica 3</h3>
+            <canvas id="chart3" width="400" height="400"></canvas>
         </div>
         <div class="col-md-6">
-            <h3 class="chart-title">Monedas por estado</h3>
-            <canvas id="coinsByStateChart" width="400" height="400"></canvas>
+            <h3>Título de la Gráfica 4</h3>
+            <canvas id="chart4" width="400" height="400"></canvas>
         </div>
     </div>
 </div>
